@@ -1,0 +1,64 @@
+//Minions, LIVRE, Animação
+// Ponte para Terabitia, LIVRE, Aventura
+// Mágico de Oz, LIVRE, Aventura
+// Homem Aranha (Longe de Casa), 14, Ação
+// Angry Birds, 16, Animação
+// Mad Max (Estrada da Fúria), 16, Ação
+// Ilha do Medo, 16, Ação
+// Deadpool e Wolverine, 18, Ação
+let campoIdade;
+let campoAnimação;
+let campoAção;
+let campoAventura;
+
+function setup() {
+  createCanvas(800, 400);
+  createElement("h2", "Recomendador de filmes");
+  createSpan("Sua idade:");
+  campoIdade = createInput("5");
+  campoAventura = createCheckbox("Gosta de aventura?");
+  campoAção = createCheckbox("Gosta de ação?");
+  campoAnimação = createCheckbox("Gosta de animação?");
+
+}
+
+
+function draw() {
+    background("white");
+    let idade = campoIdade.value();
+    let gostaDeAção = campoAção.checked();
+    let gostaDeAventura = campoAventura.checked();
+    let gostaDeAnimação = campoAnimação.checked();
+    let recomendacao = geraRecomendacao(idade, gostaDeAção);
+
+    fill(color(76, 0, 115));
+    textAlign(CENTER, CENTER);
+    textSize(38);
+    text(recomendacao, width / 2, height / 2);
+}
+
+function geraRecomendacao(idade, gostaDeAção, gostaDeAventura){
+  if (idade >= 13) {
+      if(idade>=18){
+        return "Deadpool e Wolverine";
+      }
+      if(idade >=16){
+        if(gostaDeAção){
+          return "Ilha do Medo";
+        } else {
+          return "Angry Birds 2"
+        }
+      }
+      if(idade>=14){
+        return "Homem aranha - Longe de casa"
+      }
+    }
+      if(idade >=1){
+        if(gostaDeAção){
+          return "Magico de oz";
+        } else {
+          return "Minions"
+        }
+      }
+}
+    
